@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clean Button Samples</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    gap: 20px;
+    flex-wrap: wrap;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Dark Mode */
+body.dark-mode {
+    background: #0f172a;
+    color: white;
+}
+
+/* Toggle Switch Container */
+.toggle-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+/* Switch */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 26px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    background-color: #ccc;
+    border-radius: 34px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: 0.4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    border-radius: 50%;
+    transition: 0.4s;
+}
+
+input:checked + .slider {
+    background-color: #4e73df;
+}
+
+input:checked + .slider:before {
+    transform: translateX(24px);
+}
+
+/* Base Button Style */
+.btn {
+    padding: 12px 28px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.3s ease;
+    display: inline-block;
+}
+
+/* 1. Gradient Button */
+.btn-gradient {
+    background: linear-gradient(45deg, #4e73df, #1cc88a);
+    color: white;
+}
+.btn-gradient:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+/* 8. 3D Press Button */
+.btn-3d {
+    background: #f59e0b;
+    color: white;
+    box-shadow: 0 5px 0 #b45309;
+    position: relative;
+}
+
+.btn-3d:hover {
+    background: #fbbf24;
+}
+
+.btn-3d:active {
+    transform: translateY(4px);
+    box-shadow: 0 1px 0 #b45309;
+}
+/* 2. Outline Button */
+.btn-outline {
+    background: transparent;
+    border: 2px solid #4e73df;
+    color: #4e73df;
+}
+.btn-outline:hover {
+    background: #4e73df;
+    color: white;
+}
+
+/* 3. Soft Shadow Button */
+.btn-soft {
+    background: white;
+    color: #333;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.btn-soft:hover {
+    box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+}
+
+/* 4. Dark Modern Button */
+.btn-dark {
+    background: #1e293b;
+    color: white;
+}
+.btn-dark:hover {
+    background: #334155;
+}
+
+/* 5. Animated Pulse Button */
+.btn-pulse {
+    background: #ff6b6b;
+    color: white;
+    position: relative;
+}
+.btn-pulse:hover {
+    animation: pulse 0.6s infinite alternate;
+}
+@keyframes pulse {
+    from { transform: scale(1); }
+    to { transform: scale(1.08); }
+}
+
+/* 6. Glass Button */
+.btn-glass {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: #1e293b;
+}
+.btn-glass:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: translateY(-3px);
+}
+body.dark-mode .btn-glass {
+    color: white;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* 7. Neon Glow Button */
+.btn-neon {
+    background: #0f172a;
+    color: #00f5ff;
+    border: 2px solid #00f5ff;
+}
+.btn-neon:hover {
+    background: #00f5ff;
+    color: #0f172a;
+    box-shadow: 
+        0 0 5px #00f5ff,
+        0 0 15px #00f5ff,
+        0 0 30px #00f5ff;
+}
+
+/* ================= TABLE STYLES ================= */
+
+.table-container {
+    width: 100%;
+    max-width: 800px;
+    margin-top: 40px;
+}
+
+.credentials-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    font-size: 15px;
+}
+
+.credentials-table thead {
+    background: linear-gradient(45deg, #4e73df, #1cc88a);
+    color: white;
+}
+
+.credentials-table th,
+.credentials-table td {
+    padding: 14px 18px;
+    text-align: left;
+}
+
+.credentials-table tbody tr {
+    border-bottom: 1px solid #eee;
+    transition: background 0.2s ease;
+}
+
+.credentials-table tbody tr:hover {
+    background: #f2f6ff;
+}
+
+.credentials-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+body.dark-mode .credentials-table {
+    background: #1e293b;
+    color: white;
+}
+
+body.dark-mode .credentials-table tbody tr {
+    border-bottom: 1px solid #334155;
+}
+
+body.dark-mode .credentials-table tbody tr:hover {
+    background: #334155;
+}
+
+/* Password Styling */
+.password-cell {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.toggle-password {
+    cursor: pointer;
+    font-size: 15px;
+    opacity: 0.6;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.toggle-password:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+</style>
+</head>
+
+<body>
+
+<div class="toggle-container">
+    <label class="switch">
+        <input type="checkbox" id="darkModeToggle">
+        <span class="slider"></span>
+    </label>
+</div>
+
+<a href="https://envision.admin.simplee.com/payables" class="btn btn-gradient" target="_blank">Flywire</a>
+<a href="https://pay.envisionhealth.com/provider/login?next=/operator/" class="btn btn-outline" target="_blank">Cedar</a>
+<a href="https://teams.microsoft.com/v2/" class="btn btn-soft" target="_blank">Teams</a>
+<a href="https://mail.tsico.com/owa/#path=/mail/inbox" class="btn btn-dark" target="_blank">Mail</a>
+<a href="https://kaori1232132.github.io/hairoldcalcu/" class="btn btn-pulse" target="_blank">Calculator</a>
+
+<!-- NEW -->
+
+<a href="https://evhc.okta.com/app/UserHome?iss=https%3A%2F%2Fevhc.okta.com&session_hint=AUTHENTICATED" class="btn btn-neon">OKTA</a>
+<a href="https://acd.na3.livevox.com/NCO_SST_ARM/AgentLogin" class="btn btn-3d" target="_blank">LIVEVOX</a>
+
+<!-- Credentials Table -->
+<div class="table-container">
+    <table class="credentials-table">
+        <thead>
+            <tr>
+                <th>Platform</th>
+                <th>Username</th>
+                <th>Password</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Flywire</td>
+                <td>hairoldjames.ebalobo@tsico.com</td>
+                <td class="password-cell">
+                    <span class="password" data-password="Kaori25.">*************</span>
+                    <span class="toggle-password">👁</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Cedar</td>
+                <td>HairoldJames.Ebalobo@tsico.com</td>
+                <td class="password-cell">
+                    <span class="password" data-password="Kousei25.">****************</span>
+                    <span class="toggle-password">👁</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Teams</td>
+                <td>hairoldjames.ebalobo@tsico.com</td>
+                <td class="password-cell">
+                    <span class="password" data-password="Welcome@1234567">****************</span>
+                    <span class="toggle-password">👁</span>
+                </td>
+                
+            </tr>
+                <tr>
+        <td>OKTA</td>
+        <td>hairold.jame.ebalobo</td>
+        <td class="password-cell">
+            <span class="password" data-password="Kaorikousei1.">***************</span>
+            <span class="toggle-password">👁</span>
+        </td>
+    </tr>
+
+    <!-- NEW: LIVEVOX -->
+    <tr>
+        <td>LIVEVOX</td>
+        <td>19737</td>
+        <td class="password-cell">
+            <span class="password" data-password="livevox1">********</span>
+            <span class="toggle-password">👁</span>
+        </td>
+    </tr>
+</tbody>
+        </tbody>
+    </table>
+</div>
+
+<script>
+// Button click animation
+document.querySelectorAll('.btn').forEach(button => {
+    button.addEventListener('click', function() {
+        this.style.transform = "scale(0.95)";
+        setTimeout(() => {
+            this.style.transform = "";
+        }, 150);
+    });
+});
+
+// Dark Mode Toggle
+document.getElementById('darkModeToggle')
+.addEventListener('change', function() {
+    document.body.classList.toggle('dark-mode');
+});
+
+// Show / Hide Password
+document.querySelectorAll('.toggle-password').forEach(icon => {
+    icon.addEventListener('click', function () {
+        const passwordSpan = this.previousElementSibling;
+        const realPassword = passwordSpan.getAttribute('data-password');
+
+        if (passwordSpan.textContent.includes('*')) {
+            passwordSpan.textContent = realPassword;
+            this.textContent = "🙈";
+        } else {
+            passwordSpan.textContent = "*".repeat(realPassword.length);
+            this.textContent = "👁";
+        }
+    });
+});
+</script>
+
+</body>
+</html>
